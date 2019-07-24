@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.baizhi.dao.UserDao">
+    <!--查询总行数-->
+    <select id="selectCount" resultType="java.lang.Integer">
+        select count(*) from c_user
+    </select>
+    <!--分页查询-->
+    <select id="selectByPage" resultType="User">
+        select user_id userId,phone,password,salt,dharmaName,province,
+        city,gender,personal_sign personalSign,profile,status,regist_time registTime
+        from c_user
+        limit ${(Page-1)*Size},#{Size}
+    </select>
+    <!--添加用户-->
+    <insert id="insertUser">
+        insert into c_user values(#{userId},#{phone},#{password},#{salt},#{dharmaName},#{province},#{city},
+        #{gender},#{personalSign},#{profile},#{status},#{registTime})
+    </insert>
+    <!--修改用户-->
+    <update id="updateUser">
+        update c_user set
+        phone = #{phone},
+        password = #{password},
+        salt = #{salt},
+        dharmaName = #{dharmaName},
+        phone = #{phone},
+        province = #{province},
+        gender = #{gender},
+        personal_sign = #{personalSign},
+        profile = #{profile},
+        status = #{status},
+        regist_time = #{registTime}
+        where user_id = #{userId}
+    </update>
+    <!--修改图片路径-->
+    <update id="updateById">
+        update c_user set profile = #{profile}
+        where user_id = #{userId}
+    </update>
+    <!--根据id删除-->
+    <delete id="deleteById">
+        delete from c_user where user_id = #{userId}
+    </delete>
+    <!--修改状态-->
+    <update id="updateStatus">
+        update c_user set status = #{status} where user_id = #{userId}
+    </update>
+    <!--查询所有-->
+    <select id="selectAll" resultType="User">
+        select user_id userId,phone,password,salt,dharmaName,province,
+        city,gender,personal_sign personalSign,profile,status,regist_time registTime
+        from c_user
+    </select>
+</mapper>

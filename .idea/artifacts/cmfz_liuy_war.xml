@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cmfz_liuy:war">
+    <output-path>$PROJECT_DIR$/cmfz_liuy/target</output-path>
+    <root id="archive" name="cmfz_liuy-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="cmfz_liuy:war exploded" />
+    </root>
+  </artifact>
+</component>
